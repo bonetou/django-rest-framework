@@ -28,6 +28,6 @@ class Registration(models.Model):
         ('E', 'EVENING'),
         ('N', 'NIGHT'),
     )
-    student = models.ForeignKey(Student, on_delete=models.CASCADE, )
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     time = models.CharField(max_length=1, choices=TIME, blank=False, null=False, default='M')

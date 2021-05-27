@@ -16,3 +16,12 @@ class RegistrationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Registration
         exclude = []
+
+class ListRegistrationsStudentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Registration
+        fields = ['course', 'time']
+    course = serializers.ReadOnlyField(source='course.description')
+    time = serializers.SerializerMethodField()
+    def get_time(self, obj):
+        return obj.get_time_display()
