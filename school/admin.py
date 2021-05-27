@@ -1,5 +1,5 @@
 from django.contrib import admin
-from school.models import Student, Course
+from school.models import Student, Course, Register
 
 class Students(admin.ModelAdmin):
     list_display = ('id', 'name', 'student_number', 'birthday')
@@ -16,3 +16,9 @@ class Courses(admin.ModelAdmin):
     list_per_page = 20
 
 admin.site.register(Course, Courses)
+
+class Registers(admin.ModelAdmin):
+    list_display = ('id', 'student', 'course', 'time')
+    list_display_links = ('id', )
+
+admin.site.register(Register, Registers)

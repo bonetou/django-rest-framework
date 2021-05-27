@@ -9,16 +9,25 @@ class Student(models.Model):
         return self.name
     
 class Course(models.Model):
-    NIVEL = (
+    LEVEL = (
         ('B', 'BASIC'),
         ('I', 'INTERMEDIARY'),
         ('A', 'ADVANCED'),
     )
     course_id = models.CharField(max_length=10)
     description = models.CharField(max_length=100)
-    level = models.CharField(max_length=1, choices=NIVEL, blank=False, null=False, default='B')
+    level = models.CharField(max_length=1, choices=LEVEL, blank=False, null=False, default='B')
 
     
     def __str__(self):
         return self.description
     
+class Register(models.Model):
+    TIME = (
+        ('M', 'MORNING'),
+        ('E', 'EVENING'),
+        ('N', 'NIGHT'),
+    )
+    student = models.ForeignKey(Student, on_delete=models.CASCADE, )
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    time = models.CharField(max_length=1, choices=TIME, blank=False, null=False, default='M')
