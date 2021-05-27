@@ -4,5 +4,5 @@ from school.views import students
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('alunos/', students),
+    path('students/', students),
 ]
