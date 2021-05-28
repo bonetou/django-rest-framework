@@ -9,8 +9,8 @@ class StudentViewSet(viewsets.ModelViewSet):
     '''Shows all students'''
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
-    authentication_classes = BasicAuthentication
-    permission_classes = IsAuthenticated
+    # authentication_classes = BasicAuthentication
+    # permission_classes = IsAuthenticated
 
 class CourseViewSet(viewsets.ModelViewSet):
     '''Show all courses'''
