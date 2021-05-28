@@ -25,3 +25,12 @@ class ListRegistrationsStudentSerializer(serializers.ModelSerializer):
     time = serializers.SerializerMethodField()
     def get_time(self, obj):
         return obj.get_time_display()
+
+class ListRegistrationsCourseSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Registration
+        fields = ['student', 'time']
+    student = serializers.ReadOnlyField(source='student.name')
+    time = serializers.SerializerMethodField()
+    def get_time(self, obj):
+        return obj.get_time_display()
