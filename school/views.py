@@ -2,11 +2,15 @@ from django.db.models import query
 from rest_framework import viewsets, generics
 from school.models import Student, Course, Registration
 from .serializer import StudentSerializer, CourseSerializer, RegistrationSerializer, ListRegistrationsStudentSerializer, ListRegistrationsCourseSerializer
+from rest_framework.authentication import BaseAuthentication, BasicAuthentication
+from rest_framework.permissions import IsAuthenticated
 
 class StudentViewSet(viewsets.ModelViewSet):
     '''Shows all students'''
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
+    authentication_classes = BasicAuthentication
+    permission_classes = IsAuthenticated
 
 class CourseViewSet(viewsets.ModelViewSet):
     '''Show all courses'''
